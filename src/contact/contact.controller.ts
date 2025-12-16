@@ -8,7 +8,8 @@ export class ContactController {
   @Post()
 @Post()
 async sendMail(@Body() body: { name: string; email: string; message: string }) {
- 
+  console.log('Contact route hit!', body);  // <--- temporary debug
+  return this.contactService.sendMail(body);
 }
 ;
   }
