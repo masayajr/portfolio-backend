@@ -6,10 +6,10 @@ export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
   @Post()
-@Post()
-async sendMail(@Body() body: { name: string; email: string; message: string }) {
-  console.log('Contact route hit!', body);  // <--- temporary debug
-  return this.contactService.sendMail(body);
-}
-;
+  async sendMail(
+    @Body() body: { name: string; email: string; message: string },
+  ) {
+    console.log('Contact route hit!', body);
+    return this.contactService.sendMail(body);
   }
+}
