@@ -5,12 +5,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'https://flexycode.netlify.app/'],                     // React frontend
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',   // allow preflight/post
+    origin: ['http://localhost:5173', 'https://flexycode.netlify.app/'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
   });
 
-  await app.listen(3333);                               // backend port
-  console.log('Backend running on port 3333');
+  const port = process.env.PORT || 3333; // Use Render's port if available
+  await app.listen(port);
+  console.log(`Backend running on port ${port}`);
 }
-bootstrap(); 
+bootstrap();
