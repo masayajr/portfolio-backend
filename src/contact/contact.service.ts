@@ -7,10 +7,12 @@ export class ContactService {
   async sendMail({
     name,
     email,
+    phone,
     message,
   }: {
     name: string;
-    email: string;
+    email: string; 
+    phone: number
     message: string;
   }) {
     try {
@@ -22,12 +24,13 @@ export class ContactService {
           <h3>New Contact Message</h3>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone Number:</strong> ${phone}</p>
           <p><strong>Message:</strong></p>
           <p>${message}</p>
         `,
       });
-      
-      return { message: 'Email sent successfully.' };
+
+      return { message: 'Email sent successfully.', style: { color: 'green' } };
     } catch (error) {
       console.error('RESEND ERROR 👉', error);
       throw error;

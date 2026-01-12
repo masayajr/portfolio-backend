@@ -1,13 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ContactService } from './contact.service';
 
-@Controller('contact')
+@Controller()
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
-  @Post()
+  @Post('contact')
   async sendMail(
-    @Body() body: { name: string; email: string; message: string },
+    @Body() body: { name: string; email: string; phone: number; message: string },
   ) {
     console.log('Contact route hit!', body);
     return this.contactService.sendMail(body);
